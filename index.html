@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Diyamaria Augustine — Student and Aspiring Developer. Explore my skills, projects and connect with me.">
+  <title>Diyamaria Augustine | Portfolio</title>
+  <style>
+    :root {
+      --navy: #102a56;
+      --blue: #2563eb;
+      --sky: #60a5fa;
+      --pale: #eff6ff;
+      --ink: #172554;
+      --muted: #64748b;
+      --white: #ffffff;
+      --line: #dbeafe;
+      --shadow: 0 18px 45px rgba(30, 64, 175, .10);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f8fbff; color: var(--ink); line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1100px, 90%); margin: auto; }
+    header {
+      position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.92);
+      backdrop-filter: blur(14px); border-bottom: 1px solid rgba(219,234,254,.9);
+    }
+    nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-size: 1.25rem; font-weight: 850; letter-spacing: -.04em; color: var(--navy); }
+    .brand span { color: var(--blue); }
+    .nav-links { display: flex; gap: 27px; list-style: none; color: #475569; font-size: .92rem; font-weight: 600; }
+    .nav-links a:hover { color: var(--blue); }
+    .menu-btn { display: none; border: 0; background: transparent; color: var(--navy); font-size: 1.5rem; cursor: pointer; }
+    .hero {
+      position: relative; overflow: hidden; padding: 105px 0 95px;
+      background: radial-gradient(circle at 80% 20%, rgba(96,165,250,.22), transparent 28%),
+                  linear-gradient(135deg, #eff6ff 0%, #ffffff 55%, #dbeafe 100%);
+    }
+    .hero::after {
+      content: ""; position: absolute; width: 380px; height: 380px; border: 1px solid rgba(37,99,235,.12);
+      border-radius: 50%; right: -100px; bottom: -230px;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.35fr .65fr; align-items: center; gap: 60px; position: relative; z-index: 1; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--blue); font-size: .78rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 25px; height: 2px; background: var(--blue); }
+    h1 { margin: 18px 0 12px; font-size: clamp(2.7rem, 6vw, 4.6rem); line-height: 1.08; letter-spacing: -.055em; color: var(--navy); }
+    h1 span { color: var(--blue); }
+    .hero h2 { font-size: clamp(1.15rem, 2vw, 1.45rem); color: #47618a; font-weight: 650; margin-bottom: 18px; }
+    .intro { color: #52647e; max-width: 610px; font-size: 1.04rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 30px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 12px 20px; border-radius: 10px; font-weight: 700; font-size: .94rem; transition: .2s; }
+    .btn-primary { color: white; background: var(--blue); box-shadow: 0 9px 20px rgba(37,99,235,.22); }
+    .btn-primary:hover { background: #1d4ed8; transform: translateY(-2px); }
+    .btn-outline { border: 1px solid #bfdbfe; color: var(--navy); background: white; }
+    .btn-outline:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-2px); }
+    .photo-wrap { display: flex; justify-content: center; }
+    .photo-frame {
+      width: min(290px, 70vw); aspect-ratio: 1; border-radius: 34% 66% 58% 42% / 42% 38% 62% 58%;
+      background: linear-gradient(145deg, #1d4ed8, #93c5fd); padding: 9px; box-shadow: 0 25px 60px rgba(30,64,175,.22); transform: rotate(3deg);
+    }
+    .photo-inner {
+      width: 100%; height: 100%; border-radius: inherit; overflow: hidden; background: #dbeafe;
+      display: grid; place-items: center; color: #1e40af; font-size: 4.2rem; font-weight: 850; letter-spacing: -.08em;
+    }
+    .photo-inner img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    section { padding: 82px 0; }
+    .section-heading { margin-bottom: 34px; }
+    .section-heading .eyebrow { margin-bottom: 9px; }
+    h2.section-title { font-size: clamp(2rem, 4vw, 2.65rem); line-height: 1.15; letter-spacing: -.04em; color: var(--navy); }
+    .section-sub { margin-top: 10px; color: var(--muted); max-width: 650px; }
+    .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 26px; align-items: stretch; }
+    .panel { background: white; border: 1px solid var(--line); border-radius: 18px; padding: 28px; box-shadow: var(--shadow); }
+    .panel p { color: #53657e; }
+    .quick-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+    .fact { background: var(--pale); border-radius: 14px; padding: 18px; }
+    .fact strong { display: block; color: var(--blue); font-size: 1.2rem; margin-bottom: 3px; }
+    .fact span { color: #52647e; font-size: .88rem; }
+    .skills { background: #f0f6ff; }
+    .skill-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .skill { background: white; border: 1px solid var(--line); border-radius: 15px; padding: 21px; text-align: center; box-shadow: 0 8px 24px rgba(30,64,175,.05); }
+    .skill-icon { width: 43px; height: 43px; margin: 0 auto 11px; display: grid; place-items: center; border-radius: 12px; background: #dbeafe; color: var(--blue); font-weight: 850; }
+    .skill h3 { color: var(--navy); font-size: 1rem; }
+    .skill p { color: var(--muted); font-size: .82rem; margin-top: 4px; }
+    .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .project { background: white; border: 1px solid var(--line); border-radius: 17px; padding: 24px; box-shadow: var(--shadow); display: flex; flex-direction: column; min-height: 220px; }
+    .project-tag { color: var(--blue); font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .09em; }
+    .project h3 { color: var(--navy); margin: 10px 0 8px; font-size: 1.15rem; }
+    .project p { color: #64748b; font-size: .91rem; flex: 1; }
+    .project a { color: var(--blue); font-weight: 750; font-size: .9rem; margin-top: 18px; }
+    .contact { background: linear-gradient(135deg, #102a56, #1d4ed8); color: white; }
+    .contact .section-title { color: white; }
+    .contact .section-sub { color: #dbeafe; }
+    .contact-card { margin-top: 25px; padding: 27px; border-radius: 18px; border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.08); display: flex; justify-content: space-between; align-items: center; gap: 25px; }
+    .contact-card p { color: #dbeafe; }
+    .socials { display: flex; flex-wrap: wrap; gap: 11px; }
+    .socials a { border: 1px solid rgba(255,255,255,.35); border-radius: 9px; padding: 10px 15px; font-weight: 700; font-size: .9rem; }
+    .socials a:hover { background: white; color: var(--navy); }
+    footer { background: #0b1e3d; color: #b9c9e2; text-align: center; padding: 22px 0; font-size: .85rem; }
+    @media (max-width: 800px) {
+      .hero-grid, .about-grid { grid-template-columns: 1fr; }
+      .hero-grid { text-align: center; gap: 40px; }
+      .hero .eyebrow { justify-content: center; }
+      .intro { margin: auto; }
+      .actions { justify-content: center; }
+      .photo-wrap { grid-row: 1; }
+      .photo-frame { width: 210px; }
+      .skill-grid { grid-template-columns: repeat(2, 1fr); }
+      .project-grid { grid-template-columns: 1fr 1fr; }
+      .contact-card { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 560px) {
+      .nav-links { display: none; position: absolute; top: 72px; left: 0; right: 0; padding: 20px 5%; background: white; border-bottom: 1px solid var(--line); flex-direction: column; gap: 15px; }
+      .nav-links.open { display: flex; }
+      .menu-btn { display: block; }
+      .hero { padding: 65px 0; }
+      section { padding: 62px 0; }
+      .skill-grid, .project-grid { grid-template-columns: 1fr 1fr; gap: 11px; }
+      .skill { padding: 16px 10px; }
+      .panel { padding: 22px; }
+      .quick-facts { gap: 9px; }
+      .fact { padding: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <a class="brand" href="#home">Diyamaria<span>.</span></a>
+      <button class="menu-btn" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li><li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li><li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Welcome to my portfolio</div>
+          <h1>Hi, I'm <span>Diyamaria Augustine</span></h1>
+          <h2>Student &amp; Aspiring Developer</h2>
+          <p class="intro">I’m a student who enjoys exploring technology, learning programming, and turning ideas into practical projects. I’m always curious, motivated to improve, and excited to grow as a developer.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#projects">Explore my work ↗</a>
+            <a class="btn btn-outline" href="https://www.linkedin.com/in/diyamaria-augustine-525381384" target="_blank" rel="noopener">Connect on LinkedIn ↗</a>
+          </div>
+        </div>
+        <div class="photo-wrap">
+          <div class="photo-frame">
+            <div class="photo-inner">
+              <img src="profile.jpg" alt="Portrait of Diyamaria Augustine" onerror="this.remove(); this.parentElement.textContent='DM';">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">A little about me</div>
+          <h2 class="section-title">Curious mind. Growing developer.</h2>
+          <p class="section-sub">A little introduction and the areas I’m currently exploring.</p>
+        </div>
+        <div class="about-grid">
+          <div class="panel">
+            <p>I’m Diyamaria Augustine, a student building my foundation in software development. I enjoy learning how applications work, practising problem-solving, and strengthening my programming skills. This portfolio is a space to share my learning journey, projects, and progress.</p>
+          </div>
+          <div class="quick-facts">
+            <div class="fact"><strong>Student</strong><span>Learning and growing</span></div>
+            <div class="fact"><strong>Developer</strong><span>In the making</span></div>
+            <div class="fact"><strong>Java</strong><span>Programming practice</span></div>
+            <div class="fact"><strong>Python</strong><span>Programming practice</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills" id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">What I'm learning</div>
+          <h2 class="section-title">My technical skills</h2>
+          <p class="section-sub">Technologies and concepts I’ve been learning through coursework and practice.</p>
+        </div>
+        <div class="skill-grid">
+          <div class="skill"><div class="skill-icon">J</div><h3>Java</h3><p>OOP and Swing basics</p></div>
+          <div class="skill"><div class="skill-icon">Py</div><h3>Python</h3><p>Programming fundamentals</p></div>
+          <div class="skill"><div class="skill-icon">SQL</div><h3>SQL</h3><p>Database basics</p></div>
+          <div class="skill"><div class="skill-icon">⌘</div><h3>Git &amp; GitHub</h3><p>Version control journey</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">What I've been practising</div>
+          <h2 class="section-title">Projects &amp; practice</h2>
+          <p class="section-sub">A few learning projects that can be expanded with repository links and screenshots.</p>
+        </div>
+        <div class="project-grid">
+          <article class="project">
+            <div class="project-tag">Java · Swing</div>
+            <h3>Java Calculator</h3>
+            <p>A desktop calculator interface that practises GUI components, event handling, and basic arithmetic operations.</p>
+            <a href="https://github.com/diaamariaa" target="_blank" rel="noopener">View GitHub profile ↗</a>
+          </article>
+          <article class="project">
+            <div class="project-tag">Python</div>
+            <h3>Python Practice Programs</h3>
+            <p>A collection of beginner programs exploring functions, object-oriented programming, decorators, and database connectivity.</p>
+            <a href="https://github.com/diaamariaa" target="_blank" rel="noopener">View GitHub profile ↗</a>
+          </article>
+          <article class="project">
+            <div class="project-tag">SQL · Database</div>
+            <h3>Library Database</h3>
+            <p>A database design exercise involving books, publishers, members, and transaction records.</p>
+            <a href="https://github.com/diaamariaa" target="_blank" rel="noopener">View GitHub profile ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="eyebrow" style="color:#bfdbfe">Let's connect</div>
+        <h2 class="section-title">Have an opportunity or idea?</h2>
+        <p class="section-sub">I’d love to connect, learn from others, and keep growing. Find me on LinkedIn or GitHub.</p>
+        <div class="contact-card">
+          <div><h3>Diyamaria Augustine</h3><p>Student &amp; Aspiring Developer</p></div>
+          <div class="socials">
+            <a href="https://www.linkedin.com/in/diyamaria-augustine-525381384" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a href="https://github.com/diaamariaa" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>© <span id="year"></span> Diyamaria Augustine · Made with care</footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
